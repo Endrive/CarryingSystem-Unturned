@@ -59,7 +59,7 @@ namespace CarryingSystem
                 shouldAllow = false;
                 UnturnedPlayer cuffedPlayer = UnturnedPlayer.FromCSteamID(new CSteamID(playerID));
                 if (cuffedPlayer != null)
-                    UnturnedChat.Say(cuffedPlayer, "Jesteś zakuty i nie możesz samodzielnie wsiąść do pojazdu!", Color.red);
+                    UnturnedChat.Say(cuffedPlayer, "You are cuffed and cannot enter a vehicle on your own!", Color.red);
                 return;
             }
 
@@ -113,12 +113,12 @@ namespace CarryingSystem
                 {
                     vehiclePassengers[rescuerID] = cuffedID;
                     if (rescuer != null)
-                        UnturnedChat.Say(rescuer, "Wsadziłeś zakutego do pojazdu.", Color.cyan);
+                        UnturnedChat.Say(rescuer, "You placed the cuffed player into the vehicle.", Color.cyan);
                 }
                 else
                 {
                     if (rescuer != null)
-                        UnturnedChat.Say(rescuer, "Brak wolnych miejsc w tym pojeździe!", Color.red);
+                        UnturnedChat.Say(rescuer, "There are no empty seats in this vehicle!", Color.red);
                 }
             }
             else
@@ -149,7 +149,7 @@ namespace CarryingSystem
                 if (carryingPlayers.ContainsKey(rescuerId))
                 {
                     carryingPlayers.Remove(rescuerId);
-                    UnturnedChat.Say(rescuer, "Upuściłeś gracza.", Color.yellow);
+                    UnturnedChat.Say(rescuer, "You dropped the player.", Color.yellow);
                     return;
                 }
 
@@ -180,7 +180,7 @@ namespace CarryingSystem
                     if (targetPlayer.animator.gesture == EPlayerGesture.ARREST_START)
                     {
                         carryingPlayers[rescuerId] = targetID;
-                        UnturnedChat.Say(rescuer, $"Podniosłeś zakutego gracza {targetPlayer.channel.owner.playerID.characterName}!", Color.green);
+                        UnturnedChat.Say(rescuer, $"You picked up the cuffed player {targetPlayer.channel.owner.playerID.characterName}!", Color.green);
                     }
                 }
             }
